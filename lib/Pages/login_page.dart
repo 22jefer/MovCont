@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _validatedUser(){
     if(_gmail.text == userLoad.gmail && _password.text == userLoad.password){
-      Navigator.pushReplacement( context , MaterialPageRoute(builder: (context) => const SearchBookPage()));
+      Navigator.pushReplacement( context , MaterialPageRoute(builder: (context) => const HomePage()));
     }else{
       _showMensaje("Correo o Contraseña Incorrecta");
     }

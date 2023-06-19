@@ -53,7 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
           tipoGene = "femenino";
         }
 
-        var user = User(_name.text, _gmail.text, _password.text);
+        var user = User("",_name.text, _gmail.text, _password.text);
 
         saveUser(user);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));

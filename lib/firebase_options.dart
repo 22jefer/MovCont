@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -52,11 +49,21 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyA3Ka_T_jtaGvyKkO8R6AzABj21gCcW2nU',
+    appId: '1:72306507527:web:3fd74ff59b459ef1f80fa2',
+    messagingSenderId: '72306507527',
+    projectId: 'boocont-e383a',
+    authDomain: 'boocont-e383a.firebaseapp.com',
+    storageBucket: 'boocont-e383a.appspot.com',
+    measurementId: 'G-DS4S7KE1NH',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC625bx5LYb4CWwb-dICjRPZlrI8_4L4xg',
-    appId: '1:963660984946:android:df4339739ead96a59f88eb',
-    messagingSenderId: '963660984946',
-    projectId: 'campamentoe-d988a',
-    storageBucket: 'campamentoe-d988a.appspot.com',
+    apiKey: 'AIzaSyDw8DMC6akftA7tVPuX65prVK46ebP515k',
+    appId: '1:72306507527:android:c62f30714dbe339bf80fa2',
+    messagingSenderId: '72306507527',
+    projectId: 'boocont-e383a',
+    storageBucket: 'boocont-e383a.appspot.com',
   );
 }

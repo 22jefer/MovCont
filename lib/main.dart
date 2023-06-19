@@ -7,9 +7,12 @@ import 'package:movecont/Pages/splash_page.dart';
 
  */
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:movvcont/Pages/login_page.dart';
 import 'package:movvcont/Pages/search_book_page.dart';
 import 'package:movvcont/firebase_options.dart';
+import 'package:movvcont/models/local_book.dart';
 import 'firebase_options.dart';
 
   Future<void> main() async{
@@ -17,8 +20,13 @@ import 'firebase_options.dart';
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
+  await Hive.initFlutter(); // Relacionar page de favorites y libros buscados
+  Hive.registerAdapter(LocalBookAdapter());// Relacionar page de favorites y libros buscados
+
+  await Hive.openBox<LocalBook>('favorites'); // Relacionar page de favorites y libros buscados
 
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -28,15 +36,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'M',
-      localizationsDelegates: const [
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-      ],
-      supportedLocales: const[
-        Locale("en","US"),
-        Locale("es", "CO")
-      ],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

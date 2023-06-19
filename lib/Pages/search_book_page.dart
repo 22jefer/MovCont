@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movvcont/Pages/detail_search_book_page.dart';
 import 'package:movvcont/models/result.dart';
 import 'package:movvcont/repository/books_api.dart';
 
@@ -36,6 +37,8 @@ class _SearchBookPageState extends State<SearchBookPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Buscador de Google"),
+        titleTextStyle: TextStyle(fontSize: 20, fontStyle: FontStyle.italic, color: Colors.black),
+
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
@@ -46,8 +49,10 @@ class _SearchBookPageState extends State<SearchBookPage> {
 
             controller: _parametro,
             decoration: const InputDecoration(
+
               border: OutlineInputBorder(),
               labelText: "Buscar libro, autor o genero",
+              labelStyle: TextStyle(fontSize: 15, fontStyle: FontStyle.italic)
             ),
             keyboardType: TextInputType.text,
             ),
@@ -59,7 +64,7 @@ class _SearchBookPageState extends State<SearchBookPage> {
             ElevatedButton(
 
               style: TextButton.styleFrom(
-                textStyle: const TextStyle(fontSize: 20)
+                textStyle: const TextStyle(fontSize: 15)
               ),
                 onPressed: (){
 
@@ -67,6 +72,7 @@ class _SearchBookPageState extends State<SearchBookPage> {
 
                 },
                 child: const Text("Buscar")
+
 
             ),
             Expanded(
@@ -86,6 +92,9 @@ class _SearchBookPageState extends State<SearchBookPage> {
                       ),
                       title: Text(book.volumeInfo?.title ?? "no title"),
                       subtitle: Text(book.volumeInfo?.publishedDate ?? "No publishedDate"),
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => DetailSearchBookPage(book)));
+                      },
                     ),
                   );
                 }
